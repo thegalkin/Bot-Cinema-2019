@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup as BF
 import re
+import requests as req
 
 todayKARO_raw = open("Today_Parser_KARO_raw.txt", 'r')
 todayKARO = open("Today_Parser_KARO.txt", 'w')
@@ -23,5 +24,23 @@ def findAllTheatres(theatres):
             'data-id': theater['data-id']
         }
     return theatresDicti
+theatresDicti = findAllTheatres(theatres)
 
-print(findAllTheatres(theatres))
+def inCinema(key):
+    filmsDicti = {}
+    cinemaUrl = "https://karofilm.ru/theatres?id=" + str(10) #заменить на key
+    soup = BF(req.get(cinemaUrl).text, "html.parser")
+    films = soup.findAll("div", {"class" : "cinema-page-item__schedule__row__data"})
+    for film in films:
+        filmsDicti[]
+    print(filmslist)
+
+
+
+
+cinemaShedule = inCinema(key)
+#for key in theatresDicti.keys():
+ #   cinemaShedule = inCinema(key)
+
+
+#print(findAllTheatres(theatres))
