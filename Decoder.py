@@ -33,17 +33,20 @@ def inCinema(key):
     filmsDicti = {}
     cinemaUrl = "https://karofilm.ru/theatres?id=" + str(key) #заменить на key
     soup = BF(req.get(cinemaUrl).text, "html.parser")
-    films = soup.findAll("div", {"class" : "cinema-page-item__schedule__row__data"})
+    #films = soup.findAll("div", {"class" : "cinema-page-item__schedule__row__data"})
+    films = soup.findAll('div', class_='cinema-page-item__schedule__row__board-row')
     #print(films)
     for film in films:
-
+        print(film)
         #print(removerForFormat(film.findAll("div", {"class" : "cinema-page-item__schedule__row__board-row__left"})[0].text))
         #print(film.findAll('div', class_ = 'cinema-page-item__schedule__row__board-row__right')[0].findAll('a')[0].text)
         #tempFilm = film.findAll(('div', {'class' : 'cinema-page-item__schedule__row__board-row__right'})[0])
         #print(tempFilm.findAll('a'))
-        filmsDicti[films.findAll("div", {"class" : "cinema-page-item__schedule__row__title"}, "h3")[0].text] = {
-            removerForFormat(film.findAll("div", {"class" : "cinema-page-item__schedule__row__board-row__left"})[0].text) 
-            : film.findAll('div', class_ = 'cinema-page-item__schedule__row__board-row__right')[0].findAll('a')[0].text
+        notWorkingShit = film.findAll('div', class_ = 'cinema-page-item__schedule__row__board-row__right')[0].findAll('a')[0].text
+        filmsDicti[films.findAll("div", {"class" : "cinema-page-item__schedule__row__title"})[0].findAll('h3')[0].text] = {
+            #'f': 'to f'
+            #removerForFormat(film.findAll("div", class_= "cinema-page-item__schedule__row__board-row__left")[0].text) : "жопа"
+            #: [notWorkingShit[i] for i in range(len(notWorkingShit))]
         }
     print(filmsDicti)
     return(filmsDicti)
