@@ -37,10 +37,13 @@ def inCinema(key):
     #print(films)
     for film in films:
 
-        print(removerForFormat(film.findAll("div", {"class" : "cinema-page-item__schedule__row__board-row__left"})[0].text))
-        print(film.findAll("a", {"class" : "=karo-wi-button sessionButton "})[0].text)
+        #print(removerForFormat(film.findAll("div", {"class" : "cinema-page-item__schedule__row__board-row__left"})[0].text))
+        #print(film.findAll('div', class_ = 'cinema-page-item__schedule__row__board-row__right')[0].findAll('a')[0].text)
+        #tempFilm = film.findAll(('div', {'class' : 'cinema-page-item__schedule__row__board-row__right'})[0])
+        #print(tempFilm.findAll('a'))
         filmsDicti[films.findAll("div", {"class" : "cinema-page-item__schedule__row__title"}, "h3")[0].text] = {
-            removerForFormat(film.findAll("div", {"class" : "cinema-page-item__schedule__row__board-row__left"})[0].text) : film.findAll("a", {"class" : "karo-wi-button sessionButton "})[0].text
+            removerForFormat(film.findAll("div", {"class" : "cinema-page-item__schedule__row__board-row__left"})[0].text) 
+            : film.findAll('div', class_ = 'cinema-page-item__schedule__row__board-row__right')[0].findAll('a')[0].text
         }
     print(filmsDicti)
     return(filmsDicti)
