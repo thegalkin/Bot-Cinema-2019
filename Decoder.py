@@ -12,6 +12,9 @@ theatres = soup.findAll('li', {'class' : 'cinemalist__cinema-item'})
 def remove_all(string):
     pattern = re.compile(r'[А-Яа-яёЁ0-9 ]+')
     return pattern.findall(string)[0].strip()
+def removerForFormat(string):
+    pattern = re.compile(r"[\S]")
+    return ''.join(pattern.findall(string))
 def findAllTheatres(theatres):
     dataIds = []
     theatresDicti = {}
@@ -25,20 +28,29 @@ def findAllTheatres(theatres):
         }
     return theatresDicti
 theatresDicti = findAllTheatres(theatres)
-
+#print(theatresDicti)
 def inCinema(key):
     filmsDicti = {}
-    cinemaUrl = "https://karofilm.ru/theatres?id=" + str(10) #заменить на key
+    cinemaUrl = "https://karofilm.ru/theatres?id=" + str(key) #заменить на key
     soup = BF(req.get(cinemaUrl).text, "html.parser")
     films = soup.findAll("div", {"class" : "cinema-page-item__schedule__row__data"})
+    #print(films)
     for film in films:
-        filmsDicti[]
-    print(filmslist)
+
+        print(removerForFormat(film.findAll("div", {"class" : "cinema-page-item__schedule__row__board-row__left"})[0].text))
+        print(film.findAll("a", {"class" : "=karo-wi-button sessionButton "})[0].text)
+        filmsDicti[films.findAll("div", {"class" : "cinema-page-item__schedule__row__title"}, "h3")[0].text] = {
+            removerForFormat(film.findAll("div", {"class" : "cinema-page-item__schedule__row__board-row__left"})[0].text) : film.findAll("a", {"class" : "karo-wi-button sessionButton "})[0].text
+        }
+    print(filmsDicti)
+    return(filmsDicti)
 
 
 
+for key in theatresDicti:
+    filmsDicti = inCinema(key)
 
-cinemaShedule = inCinema(key)
+#cinemaShedule = inCinema(key)
 #for key in theatresDicti.keys():
  #   cinemaShedule = inCinema(key)
 
