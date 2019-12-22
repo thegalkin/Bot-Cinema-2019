@@ -35,22 +35,23 @@ def inCinema(key):
     soup = BF(req.get(cinemaUrl).text, "html.parser")
     #films = soup.findAll("div", {"class" : "cinema-page-item__schedule__row__data"})
     films = soup.findAll('div', class_='cinema-page-item__schedule__row__data')
-    #print(films)
+    #films = soup.findAll("div", class_='cinema-page-item__schedule__row')
+    #print(soup.findAll("div", class_='cinema-page-item__schedule__row'))
     for film in films:
         
         notWorkingShit = film.findAll('div', class_ = 'cinema-page-item__schedule__row__board-row__right')[0].findAll('a')[0].text
         filmsDicti[film.findAll('h3')[0].text] = {
 
             removerForFormat(film.findAll("div", class_= "cinema-page-item__schedule__row__board-row__left")[0].text) :
-             [film.findAll('div', class_ = 'cinema-page-item__schedule__row__board-row__right')[0].findAll('a')[0].text]
+             [i. text for i in film.findAll('div', class_ = 'cinema-page-item__schedule__row__board-row__right')[0].findAll('a')]
         }
     print(filmsDicti)
     return(filmsDicti)
 
 
-
-for key in theatresDicti:
-    filmsDicti = inCinema(key)
+filmsDicti = inCinema(10) # удалить
+#for key in theatresDicti:
+ #   filmsDicti = inCinema(key)
 
 #cinemaShedule = inCinema(key)
 #for key in theatresDicti.keys():
