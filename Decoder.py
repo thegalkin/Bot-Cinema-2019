@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as BF
 import re
 import requests as req
+import sqlite3
 
 todayKARO_raw = open("Today_Parser_KARO_raw.txt", 'r')
 todayKARO = open("Today_Parser_KARO.txt", 'w')
@@ -49,5 +50,18 @@ print(dataIds)
 filmsByIds = {key: inCinema(key) for key in dataIds}
 print(filmsByIds)
 
+def SQwork(filmsByIds):
+    con = sqlite3.connect('cinemasKaro.db')
+    cur = conn.cursor()
+    cur.execute("""CREATE TABLE IF NOT EXISTS cinema_halls_karo( 
+                 cinema_id INTEGER,
+                 cinema_name TEXT,
+                 cinema_address TEXT,
+                 cinema_metro TEXT, 
+                 cinema_phone TEXT)""")
+
+    con.commit()
+    cur.close()
+    con.close()
 
 
