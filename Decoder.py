@@ -30,7 +30,7 @@ def findAllTheatres(theatres):
         }
     return theatresDicti
 theatresDicti = findAllTheatres(theatres)
-#print(theatresDicti)
+
 def inCinema(key):
     filmsDicti = {}
     cinemaUrl = "https://karofilm.ru/theatres?id=" + str(key)
@@ -45,16 +45,11 @@ def inCinema(key):
     return(filmsDicti)
 
 
-#filmsDicti = inCinema(10) # удалить
+
 filmsDicti = {}
 print(dataIds)
-for key in dataIds:
-    print(key)
-    filmsDicti = inCinema(key)
-print(filmsDicti)
-#cinemaShedule = inCinema(key)
-#for key in theatresDicti.keys():
- #   cinemaShedule = inCinema(key)
+filmsByIds = {key: inCinema(key) for key in dataIds}
+print(filmsByIds)
 
 
-#print(findAllTheatres(theatres))
+
