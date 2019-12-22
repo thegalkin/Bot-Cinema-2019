@@ -44,8 +44,6 @@ def inCinema(key):
 
     return(filmsDicti)
 
-
-
 filmsDicti = {}
 print(dataIds)
 filmsByIds = {key: inCinema(key) for key in dataIds}
