@@ -1,4 +1,5 @@
 def sis(b):
+    print(b, "otl sis")
     lpos = b.find("(")
     rpos = b.find(")")
     if lpos != -1:
@@ -42,24 +43,26 @@ def calc(b):
             b[objPos] = b[objPos-1] ** b[objPos+1]
             del(b[objPos-1])
             del(b[objPos+1])
+        print(b, "otl calca")
     return b
 
 
 
-a = "56(8) + 10(2) + 28, (2)"
+a = "56(8) + 10(2) + 28 , (2)"
 b = a.split(" ")
-print(b)
+endPos = b.index(",")
+b = b[:endPos]
+print(b,"otl after split")
 for i, item in enumerate(b):
+
     if i != ",":
         if i != "+" or i!= "-" or i!= "/" or i!= "*" or i!= "^" :
             b[i] = sis(item)
         else:
             pass
-
     else:
-        endPos = b.find(",")
         break
-b = b[:endPos]
+
 for i in range(len(b)):
     b[i] = calc(b[i])
 
@@ -68,4 +71,4 @@ for i in range(len(b)):
 
 
 
-print(b)
+print(b,"otl final")
