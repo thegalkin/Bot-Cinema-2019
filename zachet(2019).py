@@ -6,22 +6,6 @@ def sis(b):
         b = b[:lpos]
         b = int(b, int(stem))
     return b
-
-
-
-a = "56(8) + 10(2) + 28"
-b = a.split(" ")
-print(b)
-for i, item in enumerate(b):
-    if i != ",":
-        if i != "+" or i!= "-" or i!= "/" or i!= "*" or i!= "^" :
-            b[i] = sis(item)
-        else:
-            pass
-
-    else:
-        endPos = b.find(",")
-        break
 def priori(b):
     while True:
         if "*" in b:
@@ -58,6 +42,26 @@ def calc(b):
             b[objPos] = b[objPos-1] ** b[objPos+1]
             del(b[objPos-1])
             del(b[objPos+1])
+    return b
+
+
+
+a = "56(8) + 10(2) + 28, (2)"
+b = a.split(" ")
+print(b)
+for i, item in enumerate(b):
+    if i != ",":
+        if i != "+" or i!= "-" or i!= "/" or i!= "*" or i!= "^" :
+            b[i] = sis(item)
+        else:
+            pass
+
+    else:
+        endPos = b.find(",")
+        break
+b = b[:endPos]
+for i in range(len(b)):
+    b[i] = calc(b[i])
 
 
 
