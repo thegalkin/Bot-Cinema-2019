@@ -58,11 +58,10 @@ cur.execute("""CREATE TABLE IF NOT EXISTS cinema_halls_karo(
                      cinema_address TEXT,
                      cinema_metro TEXT, 
                      cinema_phone TEXT)""")
-cur.close()
-cur = con.cursor
+con.commit()
 
-cur.execute("""CREATE TABLE IF NOT EXISTS films_karo(
-                    cinema_id INTEGER,
+cur.execute("""CREATE TABLE films_karo(
+                    cinema_id INTEGER,  
                     film TEXT,
                     format TEXT,
                     times TEXT)
@@ -76,7 +75,8 @@ for id, film in filmsByIds.items():
     print(id, film)
     cur.execute(f'insert or replace into films_karo(cinema_id) values ("{id}")')
     cur.execute(f'insert or replace into films_karo(film) values ("{film}")')
-    for format, times in enumerate([film]):
+    for format, times in film:
+        print(format, times)
         cur.execute(f'insert or replace into films_karo(format, times) values ("{format}", "{times}")')
 con.commit()
 cur.close()
