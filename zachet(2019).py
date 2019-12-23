@@ -21,7 +21,7 @@ def priori(b):
             return b.index("^"), "st"
 
 def calc(b):
-    while " " in b:
+    while len(b) > 1:
         objPos, move = priori(b)
         if move == "u":
             b[objPos] = b[objPos-1] * b[objPos+1]
