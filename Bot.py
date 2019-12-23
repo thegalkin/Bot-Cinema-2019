@@ -21,10 +21,10 @@ while True:
                 for i, j in enumerate(cinemasDicti.key()):
                     vk.method("messages.send", {"peer_id": id, "message": cinemasDicti[] + ") " + str(i),
                                                 "random_id": random.randint(1, 2147483647)})
-                listOfChoices = [j for j in range(len(cinemasDicti))]
-            if body.lower() in listOfChoices:
-                for i in enumerate(filmsDicti):
-                    vk.method("messages.send", {"peer_id": id,"message": str(), "random_id": random.randint(1, 2147483647)})
+                listOfChoices = {i: j.get("data-id") for i in range(len(cinemasDicti)) for j in cinemasDicti.values()}
+            if body.lower() in listOfChoices.values():
+
+                vk.method("messages.send", {"peer_id": id,"message": str(filmsDicti.get(body.lower())), "random_id": random.randint(1, 2147483647)})
                     #vk.method("messages.send", {"peer_id": id, "message": str(j) + ")" + "Выбери фильм из доступных сегодня:" + str(filmsDicti[i].keys()), "random_id": random.randint(1, 2147483647)})
 
         #    elif body.lower() != "привет:
