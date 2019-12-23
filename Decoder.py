@@ -52,14 +52,17 @@ print(filmsByIds)
 
 con = sqlite3.connect('cinemasKaro.db')
 cur = con.cursor()
-cur.execute("""CREATE TABLE IF NOT EXISTS cinema_halls_karo( 
+print(theatresDicti)
+cur.execute("""CREATE TABLE IF NOT EXISTS cinemas_karo( 
                      cinema_id INTEGER,
                      cinema_name TEXT,
                      cinema_address TEXT,
                      cinema_metro TEXT, 
                      cinema_phone TEXT)""")
 con.commit()
-
+theatresFordb = [theatresDicti.["data-id"].values(), theatresDicti.keys(), theatresDicti["address"].values(), theatresDicti["metro"].values(), theatresDicti["phone"].values()]
+cur.executemany(f"insert or replace into cinemas_karo values(?,?,?,?,?)", theatresFordb)
+con.commit()
 cur.execute("""CREATE TABLE films_karo(
                     cinema_id INTEGER,  
                     film TEXT,
