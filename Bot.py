@@ -17,12 +17,18 @@ while True:
             id = messages["items"][0]["last_message"]["from_id"]
             body = messages["items"][0]["last_message"]["text"]
             if body.lower() == "привет":
-                vk.method("messages.send", {"peer_id": id, "message": "Привет, выбери сеть кинотеатров: 1)Каро......Здесь должны были быть и другие сети, но Никита не справился", "random_id": random.randint(1, 2147483647)})
-            elif body.lower() == "1" or body.lower() == "1)" or body.lower() == "каро":
-                for i,j in enumerate(filmsDicti):
-                    vk.method("messages.send", {"peer_id": id, "message": str(j) + ")" + "Выбери фильм из доступных сегодня:" + str(filmsDicti[i].keys()), "random_id": random.randint(1, 2147483647)})
-            else:
-                vk.method("messages.send", {"peer_id": id, "message": "я не знаю что значит " + str(body.lower()), "random_id": random.randint(1, 2147483647)})
+                vk.method("messages.send", {"peer_id": id, "message": "Привет, выбери кинотеатр из списка", "random_id": random.randint(1, 2147483647)})
+                for i, j in enumerate(cinemasDicti.key()):
+                    vk.method("messages.send", {"peer_id": id, "message": cinemasDicti[] + ") " + str(i),
+                                                "random_id": random.randint(1, 2147483647)})
+                listOfChoices = [j for j in range(len(cinemasDicti))]
+            if body.lower() in listOfChoices:
+                for i in enumerate(filmsDicti):
+                    vk.method("messages.send", {"peer_id": id,"message": str(), "random_id": random.randint(1, 2147483647)})
+                    #vk.method("messages.send", {"peer_id": id, "message": str(j) + ")" + "Выбери фильм из доступных сегодня:" + str(filmsDicti[i].keys()), "random_id": random.randint(1, 2147483647)})
+
+        #    elif body.lower() != "привет:
+              #  vk.method("messages.send", {"peer_id": id, "message": "я не знаю что значит " + str(body.lower()), "random_id": random.randint(1, 2147483647)})
 
     except Exception as E:
         time.sleep(1)
