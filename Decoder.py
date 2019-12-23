@@ -2,11 +2,13 @@ from bs4 import BeautifulSoup as BF
 import re
 import requests as req
 import sqlite3
+import time
 
-todayKARO_raw = open("Today_Parser_KARO_raw.txt", 'r')
-todayKARO = open("Today_Parser_KARO.txt", 'w')
 
-soup = BF(todayKARO_raw, "html.parser")
+
+todayKARO_raw = req.get("https://karofilm.ru/theatres")
+
+soup = BF(todayKARO_raw.text, "html.parser")
 theatres = soup.findAll('li', {'class' : 'cinemalist__cinema-item'})
 
 
@@ -50,45 +52,12 @@ print(dataIds)
 filmsByIds = {key: inCinema(key) for key in dataIds}
 print(filmsByIds)
 
-con = sqlite3.connect('cinemasKaro.db')
-cur = con.cursor()
-print(theatresDicti)
-cur.execute("""CREATE TABLE IF NOT EXISTS cinemas_karo( 
-                     cinema_id INTEGER,
-                     cinema_name TEXT,
-                     cinema_address TEXT,
-                     cinema_metro TEXT, 
-                     cinema_phone TEXT)""")
-con.commit()
-theatresFordb = [theatresDicti.["data-id"].values(), theatresDicti.keys(), theatresDicti["address"].values(), theatresDicti["metro"].values(), theatresDicti["phone"].values()]
-cur.executemany(f"insert or replace into cinemas_karo values(?,?,?,?,?)", theatresFordb)
-con.commit()
-cur.execute("""CREATE TABLE films_karo(
-                    cinema_id INTEGER,  
-                    film TEXT,
-                    format TEXT,
-                    times TEXT)
-
-""")
-con.commit()
-id = None
-film = None
-format = None
-for id, film in filmsByIds.items():
-    print(id, film)
-    cur.execute(f'insert or replace into films_karo(cinema_id) values ("{id}")')
-    cur.execute(f'insert or replace into films_karo(film) values ("{film}")')
-    for format, times in film:
-        print(format, times)
-        cur.execute(f'insert or replace into films_karo(format, times) values ("{format}", "{times}")')
-con.commit()
-cur.close()
-con.close()
-"""for c, d in enumerate(karo_theaters_films[film]):
-        for e, f in enumerate(karo_theaters_films[b][d]):
-            print(d)"""
 
 
+resultFileFilms = open("Today_Parser_KARO_films.txt", 'w')
+resultFileFilms.write(str(filmsByIds))
+resultFileCinemas = open("Today_Parser_KARO_cinemas.txt", 'w')
+resultFileCinemas.write(str(theatresDicti))
 
 
 
