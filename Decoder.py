@@ -50,18 +50,43 @@ print(dataIds)
 filmsByIds = {key: inCinema(key) for key in dataIds}
 print(filmsByIds)
 
-def SQwork(filmsByIds):
-    con = sqlite3.connect('cinemasKaro.db')
-    cur = conn.cursor()
-    cur.execute("""CREATE TABLE IF NOT EXISTS cinema_halls_karo( 
-                 cinema_id INTEGER,
-                 cinema_name TEXT,
-                 cinema_address TEXT,
-                 cinema_metro TEXT, 
-                 cinema_phone TEXT)""")
+con = sqlite3.connect('cinemasKaro.db')
+cur = con.cursor()
+cur.execute("""CREATE TABLE IF NOT EXISTS cinema_halls_karo( 
+                     cinema_id INTEGER,
+                     cinema_name TEXT,
+                     cinema_address TEXT,
+                     cinema_metro TEXT, 
+                     cinema_phone TEXT)""")
+cur.close()
+cur = con.cursor
 
-    con.commit()
-    cur.close()
-    con.close()
+cur.execute("""CREATE TABLE IF NOT EXISTS films_karo(
+                    cinema_id INTEGER,
+                    film TEXT,
+                    format TEXT,
+                    times TEXT)
+
+""")
+con.commit()
+id = None
+film = None
+format = None
+for id, film in filmsByIds.items():
+    print(id, film)
+    cur.execute(f'insert or replace into films_karo(cinema_id) values ("{id}")')
+    cur.execute(f'insert or replace into films_karo(film) values ("{film}")')
+    for format, times in enumerate([film]):
+        cur.execute(f'insert or replace into films_karo(format, times) values ("{format}", "{times}")')
+con.commit()
+cur.close()
+con.close()
+"""for c, d in enumerate(karo_theaters_films[film]):
+        for e, f in enumerate(karo_theaters_films[b][d]):
+            print(d)"""
+
+
+
+
 
 
