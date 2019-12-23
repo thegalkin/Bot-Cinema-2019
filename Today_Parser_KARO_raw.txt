@@ -39,7 +39,7 @@
 /*<![CDATA[*/
 if(typeof jQuery !== "undefined"){
                     $.ajaxSetup({
-                         data: {"YII_CSRF_TOKEN": "f7ee523c15adf714893a0a6eb9123cc7da428608"},
+                         data: {"YII_CSRF_TOKEN": "d5a30dbeeae0104a3ac6603c61924d8eb5ffe844"},
                          cache:false
                     })};
 /*]]>*/
@@ -53,7 +53,7 @@ if(typeof jQuery !== "undefined"){
 			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		})(window,document,'script','dataLayer','GTM-P4LCMCL');</script>
 <script type="text/javascript">
-		window.csrf = 'f7ee523c15adf714893a0a6eb9123cc7da428608';
+		window.csrf = 'd5a30dbeeae0104a3ac6603c61924d8eb5ffe844';
 		window.csrfName = 'YII_CSRF_TOKEN';
 	</script>
 <meta content="dda6d2dc15b08902" name="yandex-verification"/>
@@ -716,37 +716,29 @@ $(document).ready(function() {
 <div class="mainpageslider" id="par-slider">
 <div class="mainpageslider__wrapper">
 <div class="mainpageslider__container" data-show_controlls="" id="mainpagepar-items">
-<!--слетать.ру-->
-<div class="mainpageslider__slide" data-bg-desktop="https://static.karofilm.ru/uploads/banner/resize/b5/bd/bf/db444ffab76fbf23b1142234a3.jpg" data-bg-mobile="https://static.karofilm.ru/uploads/banner/resize/8f/d8/d6/97054109ad06253676f7af0adb.jpg">
+<!--полицейский с рублёвки-->
+<div class="mainpageslider__slide" data-bg-desktop="https://static.karofilm.ru/uploads/banner/resize/21/93/a5/3db7e902d2d1edd228f3390d5d.jpg" data-bg-mobile="https://static.karofilm.ru/uploads/banner/resize/d6/29/71/ba7120b99a327932f36d55dcd4.jpg">
 <div class="mainpageslider__slide__wrapper">
 <div class="image_holder" style="display: none;">
-<img src="https://static.karofilm.ru/uploads/banner/resize/b5/bd/bf/db444ffab76fbf23b1142234a3.jpg"/>
+<img src="https://static.karofilm.ru/uploads/banner/resize/21/93/a5/3db7e902d2d1edd228f3390d5d.jpg"/>
 </div>
-<a href="/news/286"> </a> </div>
+<a href="/film/6190"> </a> </div>
 </div>
-<!--яшин-->
-<div class="mainpageslider__slide" data-bg-desktop="https://static.karofilm.ru/uploads/banner/resize/d1/5b/1c/2f4cd26b1e285eb81d939d0e14.jpg" data-bg-mobile="https://static.karofilm.ru/uploads/banner/resize/5b/01/a5/d2d959cb5dfe924f2fc49d4b45.jpg">
+<!--вторжение НГ-->
+<div class="mainpageslider__slide" data-bg-desktop="https://static.karofilm.ru/uploads/banner/resize/0f/d6/5f/efe843385f56f128fb4a4bc784.jpg" data-bg-mobile="https://static.karofilm.ru/uploads/banner/resize/ce/78/55/e980b4f4e5dc8804bc7ac0dad7.jpeg">
 <div class="mainpageslider__slide__wrapper">
 <div class="image_holder" style="display: none;">
-<img src="https://static.karofilm.ru/uploads/banner/resize/d1/5b/1c/2f4cd26b1e285eb81d939d0e14.jpg"/>
+<img src="https://static.karofilm.ru/uploads/banner/resize/0f/d6/5f/efe843385f56f128fb4a4bc784.jpg"/>
 </div>
-<a href="/film/6067"> </a> </div>
+<a href="/film/6219"> </a> </div>
 </div>
-<!--предатель-->
-<div class="mainpageslider__slide" data-bg-desktop="https://static.karofilm.ru/uploads/banner/resize/25/f4/1d/a6eb10d164b18321f3638a0df4.jpg" data-bg-mobile="https://static.karofilm.ru/uploads/banner/resize/b5/05/91/d2b683a7bb93e48d95f7752593.jpg">
+<!--союз спасения-->
+<div class="mainpageslider__slide" data-bg-desktop="https://static.karofilm.ru/uploads/banner/resize/b5/9b/18/508e568467f134c8852c42263c.jpg" data-bg-mobile="https://static.karofilm.ru/uploads/banner/resize/20/f7/e1/8fa4d0638b3c9e6143ccb0cec9.jpg">
 <div class="mainpageslider__slide__wrapper">
 <div class="image_holder" style="display: none;">
-<img src="https://static.karofilm.ru/uploads/banner/resize/25/f4/1d/a6eb10d164b18321f3638a0df4.jpg"/>
+<img src="https://static.karofilm.ru/uploads/banner/resize/b5/9b/18/508e568467f134c8852c42263c.jpg"/>
 </div>
-<a href="/film/6065"> </a> </div>
-</div>
-<!--джуманджи-->
-<div class="mainpageslider__slide" data-bg-desktop="https://static.karofilm.ru/uploads/banner/resize/29/01/81/c48b70a9164e370a41db7da264.jpg" data-bg-mobile="https://static.karofilm.ru/uploads/banner/resize/f1/e0/c8/bab411d36a68d3cc6d595cbfa1.jpg">
-<div class="mainpageslider__slide__wrapper">
-<div class="image_holder" style="display: none;">
-<img src="https://static.karofilm.ru/uploads/banner/resize/29/01/81/c48b70a9164e370a41db7da264.jpg"/>
-</div>
-<a href="/film/6160"> </a> </div>
+<a href="/film/6209"> </a> </div>
 </div>
 </div>
 </div>
@@ -1277,9 +1269,7 @@ $(document).ready(function() {
 <a class="karo-wi-button" data-cinema="15" data-step="schedule">Расписание и билеты</a>
 </div>
 </li>
-<li class="cinemalist__cinema-item" data-address='УВАЖАЕМЫЕ ГОСТИ! С 5 ДЕКАБРЯ КИНОТЕАТР ВРЕМЕННО НЕ РАБОТАЕТ!
-
-Носовихинское шоссе, д. 45, ТРЦ "Реутов Парк". Тел.: +7 (909) 989-53-19' data-adv-img="" data-adv-text="" data-adv-url="" data-advantages="1,2,8" data-geo="[55.752098,37.887932]" data-hover="true" data-id="33" data-name="10 Реутов" data-search="каро 10 реутов" data-url="/theatres?id=33">
+<li class="cinemalist__cinema-item" data-address='Носовихинское шоссе, д. 45, ТРЦ "Реутов Парк". Тел.: +7 (909) 989-53-19' data-adv-img="" data-adv-text="" data-adv-url="" data-advantages="1,2,8" data-geo="[55.752098,37.887932]" data-hover="true" data-id="33" data-name="10 Реутов" data-search="каро 10 реутов" data-url="/theatres?id=33">
 <a class="cinemalist__cinema-item__link" data-pjax="#cinema" href="/theatres?id=33" id="cinema-link_33">
 <div class="cinemalist__cinema-item__label">
 <h4><i class="icon-logo"></i> 10 Реутов</h4>
@@ -1289,9 +1279,7 @@ $(document).ready(function() {
 </div>
 </div>
 <div class="cinemalist__cinema-item__contacts">
-<p>УВАЖАЕМЫЕ ГОСТИ! С 5 ДЕКАБРЯ КИНОТЕАТР ВРЕМЕННО НЕ РАБОТАЕТ!
-
-Носовихинское шоссе, д. 45, ТРЦ "Реутов Парк". <br/><br/><i class="icon-telephone"></i>   +7 (909) 989-53-19</p>
+<p>Носовихинское шоссе, д. 45, ТРЦ "Реутов Парк". <br/><br/><i class="icon-telephone"></i>   +7 (909) 989-53-19</p>
 </div>
 <div class="cinemalist__cinema-item__metro">
 <ul class="cinemalist__cinema-item__metro__station-list">
